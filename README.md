@@ -1,2 +1,2 @@
-# veloclimap-
+# VeloCliMap
 VeloCliMap Firmware for the VeloCliMapp sensor 
