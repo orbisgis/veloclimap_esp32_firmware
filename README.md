@@ -4,7 +4,6 @@ Firmware for the **VeloCliMap** sensor, a low-cost, reproducible air temperature
 
 The firmware runs on an ESP32-C3, reads an SHT40 sensor over I2C and exposes the values over Bluetooth Low Energy. Measurements are collected by the Android app [VeloClimApp](https://github.com/orbisgis/veloclimapp), which attaches the smartphone's GPS position to each record.
 
-<br></br>
 
 # Context
 
@@ -12,7 +11,6 @@ VeloCliMap was built for **VéloClimat**, a participatory research project study
 
 VéloClimat was initiated by the GEODATICS team of the Lab-STICC, with support from the GEOMANUM Foundation. It brings together researchers from HEPIA (Geneva), HEIG-VD (Vaud), sports-medicine doctors from the CHUV (Lausanne) and the SHAKER team of the Lab-STICC. The companion app is being developed further within the ANR project [UMOVE-CC](https://anr.fr/Project-ANR-25-CE22-3992).
 
-<br></br>
 
 # How it works
 
@@ -44,7 +42,6 @@ The SHT40 offers three repeatability levels, selected in `sht_get_data` by the l
 | Medium (default) | `0xF6` | ~0.07 °C | 3.7–4.5 ms |
 | High | `0xFD` | ~0.04 °C | 6.9–8.2 ms |
 
-<br></br>
 
 # Hardware
 
@@ -135,7 +132,7 @@ The sensor sits on a 3-blade disc (Ø 42.5 mm) inside a **white PVC tube** (50 m
 - Protect the soldered wires with heat-shrink tubing.
 - Label each sensor with its BLE identifier.
 
-<br></br>
+
 
 # Build and flash
 
@@ -170,7 +167,6 @@ Each push and pull request is also built by GitHub Actions; the firmware binarie
 - the I2C pins match your wiring (`GPIO_SDA_PIN` and `GPIO_SCL_PIN` in `main/gatts_server.c`),
 - the sensor shows up as `VC_SENS_XXXXXX` in VeloClimApp (or any BLE scanner) and returns plausible values.
 
-<br></br>
 
 # Using the sensor
 
@@ -196,12 +192,11 @@ Timestamp,Temperature,Humidity,Latitude,Longitude,Accuracy
 
 Temperature in °C, humidity in % RH, latitude/longitude in degrees, GPS accuracy in metres. These files can be loaded directly in QGIS (*Add delimited text layer*) or with pandas for analysis.
 
-<br></br>
 
 # Credits
 
 VeloCliMap sensor: Erwan Bocher (CNRS/Lab-STICC), Jérémy Bernard (CNRS/EDYTEM/Lab-STICC),
-heller (UBS/Lab-STICC), Camille Colimard 
+Dominique Heller (UBS/Lab-STICC), Camille Colimard (UBS/Lab-STICC)
 
 This firmware was originally written by TheLastResort in
 [The-Last-Resort-FR/VeloClimat_ESP32_Firmware](https://github.com/The-Last-Resort-FR/VeloClimat_ESP32_Firmware),
