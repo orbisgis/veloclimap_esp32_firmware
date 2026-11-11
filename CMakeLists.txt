@@ -2,6 +2,8 @@
 # in this exact order for cmake to work correctly
 cmake_minimum_required(VERSION 3.16)
 
-include(/home/labsticc/esp/esp-idf/tools/cmake/project.cmake)
-project(veloclimat-esp-firmware)
+# Only build the components actually used by the firmware
 set(COMPONENTS main)
+
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(veloclimap-esp32-firmware)

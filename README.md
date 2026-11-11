@@ -1,38 +1,54 @@
-# VeloClimat_ESP32_Firmware
+# VeloCliMap ESP32
 
-Get data from a sht40 I2C sensor and transmits it over BLE
+VeloCliMap firmware for the VeloCliMap sensor.
+
+The firmware reads temperature and relative humidity from an SHT40 I2C sensor and exposes them over Bluetooth Low Energy (GATT server).
+
 <br></br>
 
-# Dependencies 
+# BLE interface
 
-- ESP-IDF
+- Advertised name: `VC_SENS_XXXXXX` (built from the last 3 bytes of the MAC address)
+- Service UUID: `0x181A` (Environmental Sensing)
+- Characteristic UUID: `0xFF01` (read only)
+- Value: 8 bytes, two little-endian IEEE-754 `float`: temperature (°C) then relative humidity (%). A new measurement is taken on each read.
+
+<br></br>
+
+# Dependencies
+
+- [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/v5.4.1/esp32c3/get-started/index.html) v5.4.1
+
 <br></br>
 
 # Build
 
-Clone the repository :  
+Clone the repository:
 ```bash
-git clone https://github.com/The-Last-Resort-FR/VeloClimat_ESP32_Firmware.git
+git clone https://github.com/orbisgis/veloclimap_esp32_firmware.git
 ```
 
-Build the app
+Build the app:
 ```bash
-get_idf # or make sure you have the idf environement loaded in your terminal
-cd VeloClimat_ESP32_Firmware
+get_idf # or make sure you have the ESP-IDF environment loaded in your terminal
+cd veloclimap_esp32_firmware
 idf.py build
 ```
 
-Flash the app on the ESP32
+Flash the app on the ESP32:
 ```bash
 idf.py flash monitor
 ```
+
+Each push and pull request is also built by GitHub Actions; the firmware binaries are available as workflow artifacts.
+
 <br></br>
 
 # Additional Infos
 
 - Set the target for your esp32 model (example `idf.py set_target esp32-c3`)  
 - Make sure you have the flash size of your particular esp32 set right (`idf.py menuconfig`)
-- Make sure you have the I2C pins set right `GPIO_SDA_PIN` and  `GPIO_SCL_PIN` defines in the gatts_server.c  
+- Make sure you have the I2C pins set right `GPIO_SDA_PIN` and  `GPIO_SCL_PIN` defines in `main/gatts_server.c`  
 - You can choose the accuracy level you want by changing the line `uint8_t command[1] = {SHT40_MEDIUM_ACCURACY_MEASURMENT_COMMAND};` in `sht_get_data`
 - As it stands a 1800mAh battery should last about 26hrs  
 
@@ -105,3 +121,15 @@ flowchart LR
 - The battery is taped to the back with a piece of nano tape
 - The battery connector on the ESP32 can be desoldered to solder the wires through the vias
 - The rest is soldered on headers and covered with heat shrink tube
+
+<br></br>
+
+# Credits
+
+This firmware was originally written by TheLastResort in
+[The-Last-Resort-FR/VeloClimat_ESP32_Firmware](https://github.com/The-Last-Resort-FR/VeloClimat_ESP32_Firmware),
+released into the public domain (Unlicense). Its full history has been imported into this repository.
+
+# License
+
+GPL-3.0, see [LICENSE](LICENSE).
