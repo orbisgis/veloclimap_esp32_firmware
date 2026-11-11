@@ -200,7 +200,8 @@ Temperature in °C, humidity in % RH, latitude/longitude in degrees, GPS accurac
 
 # Credits
 
-VeloCliMap sensor: Erwan Bocher (CNRS/Lab-STICC), Jérémy Bernard (CNRS/EDYTEM/Lab-STICC), Matthieu Gousseff (CNRS/Lab-STICC), François Leconte (UL/LERMAB).
+VeloCliMap sensor: Erwan Bocher (CNRS/Lab-STICC), Jérémy Bernard (CNRS/EDYTEM/Lab-STICC),
+heller (UBS/Lab-STICC), Camille Colimard 
 
 This firmware was originally written by TheLastResort in
 [The-Last-Resort-FR/VeloClimat_ESP32_Firmware](https://github.com/The-Last-Resort-FR/VeloClimat_ESP32_Firmware),
